@@ -1,21 +1,14 @@
 from pyspark.sql import SparkSession
 
-def main():
-    # Initialiser une session Spark
-    spark = SparkSession.builder \
-        .appName("HelloWorldPySpark") \
-        .getOrCreate()
+# Créer une session Spark
+spark = SparkSession.builder.appName("HelloWorldApp").getOrCreate()
 
-    # Créer un DataFrame simple
-    df = spark.createDataFrame([(1, "Hello"), (2, "World")], ["id", "message"])
+# Créer un DataFrame simple
+data = [("Hello", "World")]
+df = spark.createDataFrame(data, ["col1", "col2"])
 
-    # Afficher le contenu du DataFrame
-    df.show()
+# Afficher le DataFrame
+df.show()
 
-    print("Hello World from PySpark!")
-
-    # Arrêter la session Spark
-    spark.stop()
-
-if __name__ == "__main__":
-    main()
+# Arrêter la session Spark
+spark.stop()
