@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 RUN ln -sf /usr/bin/python3.10 /usr/bin/python && \
     ln -sf /usr/bin/pip3 /usr/bin/pip
 
-    COPY requirement.txt /app/requirement.txt
+COPY requirement.txt /app/requirement.txt
 RUN pip install --upgrade pip && pip install -r /app/requirement.txt
 
 COPY pyspark-hello.py /app/pyspark-hello.py
